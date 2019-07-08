@@ -6,14 +6,15 @@ param
 ) 
 
 
-
 ############################################
 # .variables                               #
 ############################################
 
+
 $userName = "ubnt"
 $password = "ubnt"
 $commandToRun = "set-transform http://10.10.10.10:8080/inform"
+
 
 ############################################
 # .functions                               #
@@ -101,13 +102,11 @@ param
     $endaddr = IP-toINT64 -ip $end 
   } 
    
-   
   for ($i = $startaddr; $i -le $endaddr; $i++){ 
     INT64-toIP -int $i 
   }
 
 }
-
 
 
 ############################################
@@ -136,11 +135,11 @@ foreach ($ip in $ipsToScan){
     if ($banner -Like "*dropbear*"){
       Write-Host "   [+] ******************* FOUND UBIQUITI SWITCH: $($ip) *******************"
       # Command to accept new KEY
-      #Invoke-Expression "echo y | plink -ssh -l $userName -pw $($password) $($ip) exit"
+      # Invoke-Expression "echo y | plink -ssh -l $userName -pw $($password) $($ip) exit"
       
       # Command to set-inform
-      #$showVersion = Invoke-Expression "plink -ssh -l $userName -pw $($password) $($ip) $($commandToRun)"
-      #Write-host "   [+] SHOW VER: $($showVersion)"
+      # Invoke-Expression "plink -ssh -l $userName -pw $($password) $($ip) $($commandToRun)"
+      
     }
   }else{
     Write-host " [-] NO ONE HOME: $($ip)"  -foregroundcolor red
