@@ -1,4 +1,4 @@
-# Set-UnifiController
+# Get-UnifiController
 Finds and sets the controller for a unifi switch
 
 # Execute the script
